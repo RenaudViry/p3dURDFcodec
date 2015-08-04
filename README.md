@@ -9,7 +9,12 @@ URDF is the well known Universal Robot Description Format initiated in ROS (see 
 The converter is a simple binary with a list of option, allowing to choose almost every parameter of the conversion.
 For usage, simply enter 'p3dURDFcodec -h'.
 
-The sources are written in C++.
+The sources are written in an object oriented C++ fashion.
 
-Current implementation allow only conversion from P3D to URDF.
-Again, see the help message to get the list of relevant options.
+Note and limitations: Current implementation allow only conversion from P3D to URDF.
+    A "collada" folder should already exist in the destination folder (current folder if option '-o' not used).
+    As some p3d exotic primitives are not supported in URDF (which only supports BOX, CYLINDRE and SPHERE), they are reduced to the encompassing shape. For instance the primitive "oval" is encompassed in a sphere with the largest radius.
+
+Improvements TODO:
+* Change logger in order to use a stream
+* Change pointers to basic data (double, int) to Eigen::Vector
