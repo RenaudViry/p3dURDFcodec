@@ -11,10 +11,21 @@ For usage, simply enter 'p3dURDFcodec -h'.
 
 The sources are written in an object oriented C++ fashion.
 
-Note and limitations: Current implementation allow only conversion from P3D to URDF.
-    A "collada" folder should already exist in the destination folder (current folder if option '-o' not used).
-    As some p3d exotic primitives are not supported in URDF (which only supports BOX, CYLINDRE and SPHERE), they are reduced to the encompassing shape. For instance the primitive "oval" is encompassed in a sphere with the largest radius.
+## Installation
+p3dURDFcodec is provide with a CMakeList and relies on classic CMake build system.
+It has 3 dependencies :
+* Eigen
+* tinyxml2
+* assimp3
+Problems can occur on some system with official library of these packages. Therefore, tinyxml2 sources are embedded in the project.
+Concerning Assimp, p3dURDFcodec relies on Assimp(3.1.1) library for creating collada files used by URDF. As for current status, Assimp library provided by Ubuntu official repository seems to have problems. You may have to install it by hand (see http://assimp.sourceforge.net/).
 
-Improvements TODO:
-* Change logger in order to use a stream
-* Change pointers to basic data (double, int) to Eigen::Vector
+## Note and limitations:
+p3dURDFcodec is a work-in-progress software. Regarding this status, here is a small list of current limitations:
+* Current implementation allow only conversion from P3D to URDF.
+* A "collada" folder should already exist in the destination folder (current folder if option '-o' not used).
+* As some p3d exotic primitives are not supported in URDF (which only supports BOX, CYLINDRE and SPHERE), they are reduced to the encompassing shape. For instance the primitive "oval" is encompassed in a sphere with the largest radius.
+
+Improvements and TODO:
+* Change logger in order to use a C++ stream
+* Change pointers on basic data (double, int) to Eigen::Vector
